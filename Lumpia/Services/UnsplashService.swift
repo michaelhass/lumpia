@@ -97,7 +97,7 @@ fileprivate extension URLRequest {
 
     func settingAuthorization(apiKey: String) -> URLRequest {
         var request = self
-        request.setValue("Cliennt-ID \(apiKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("Client-ID \(apiKey)", forHTTPHeaderField: "Authorization")
         return request
     }
 }
