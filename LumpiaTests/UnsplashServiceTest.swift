@@ -22,9 +22,12 @@ class UnsplashServiceTest: XCTestCase {
     func testCreateSearchTask() throws {
         let service = self.service
         let endpoint = UnsplashService.EndPoint.search("search term")
-        let completion: UnsplashService.CompetionHandler<TestCodable> = { _ in }
-
-        guard let task = service.request(endpoint, completion: completion) else {
+        let completion: UnsplashService.CompletionHandler<TestCodable> = { _ in }
+        let decode: UnsplashService.DecodingHandler<TestCodable> = { data, _ in
+            try JSONDecoder().decode(TestCodable.self, from: data)
+        }
+        
+        guard let task = service.request(endpoint, decode: decode, completion: completion) else {
             XCTFail("Task for search endpoint could not be created")
             return
         }

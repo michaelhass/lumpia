@@ -8,12 +8,14 @@
 
 import Foundation
 
+/// Service for performing request against the Unsplash API
 final class UnsplashService {
 
     // MARK: Nested types
 
     enum EndPoint {
         case search(String)
+        
         var path: String {
             switch self {
             case .search: return "search/photos"
@@ -21,7 +23,8 @@ final class UnsplashService {
         }
     }
 
-    typealias CompetionHandler<T> = (Result<T, ServiceError>) -> Void
+    typealias CompletionHandler<T> = (Result<T, ServiceError>) -> Void
+    typealias DecodingHandler<T> = (Data, URLResponse) throws -> T
 
     // MARK: Properties
 
@@ -39,19 +42,22 @@ final class UnsplashService {
 
     // MARK: API
 
-    /// Requests an codable object from the specified endpoint
+    /// Creates URLSessionTasks to request a codable object from the specified endpoint
     ///
     /// - Parameters:
     ///   - endpoint: The endpoint to request data from
+    ///   - decode: Closure to create a native object from the response data.
     ///   - completion: Excuted if task finished loading.
     /// - Returns: URLSessionTask if task could be created
-    func request<T: Codable>(_ endpoint: EndPoint,
-                             completion: @escaping CompetionHandler<T>) -> URLSessionTask? {
+    func request<T>(_ endpoint: EndPoint,
+                    decode: @escaping DecodingHandler<T>,
+                    completion: @escaping CompletionHandler<T>) -> URLSessionTask? {
 
         urlRequest(for: endpoint).map {
             $0.settingAuthorization(apiKey: apiKey)
+
         }.map {
-            session.dataTask(with: $0) { (data, _, error) in
+            session.dataTask(with: $0) { (data, response, error) in
 
                 let completeOnMain: (Result<T, ServiceError>) -> Void = { result in
                     DispatchQueue.main.async {
@@ -59,13 +65,11 @@ final class UnsplashService {
                     }
                 }
 
-                // TODO: Check response
                 guard error == nil else { return completeOnMain(.failure(.networkingError(error!))) }
-                guard let data = data else { return  completeOnMain(.failure(.noResponse)) }
+                guard let data = data, let response = response else { return  completeOnMain(.failure(.noResponse)) }
 
                 do {
-                    let decoded = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(decoded))
+                    completion(.success(try decode(data, response)))
 
                 } catch let decodingError {
                     completeOnMain(.failure(.decodingError(decodingError)))
@@ -92,6 +96,8 @@ final class UnsplashService {
     }
 
 }
+
+// MARK: - Extension URLRequest
 
 fileprivate extension URLRequest {
 
