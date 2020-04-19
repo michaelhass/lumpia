@@ -15,7 +15,7 @@ final class UnsplashService {
 
     enum EndPoint {
         case search(String)
-        
+
         var path: String {
             switch self {
             case .search: return "search/photos"
@@ -65,11 +65,17 @@ final class UnsplashService {
                     }
                 }
 
-                guard error == nil else { return completeOnMain(.failure(.networkingError(error!))) }
-                guard let data = data, let response = response else { return  completeOnMain(.failure(.noResponse)) }
+                guard error == nil else {
+                    return completeOnMain(.failure(.networkingError(error!)))
+                }
+
+                guard let data = data, let response = response as? HTTPURLResponse else {
+                        return completeOnMain(.failure(.noResponse))
+                }
 
                 do {
-                    completion(.success(try decode(data, response)))
+                    let decoded = try decode(data, response)
+                    completion(.success(decoded))
 
                 } catch let decodingError {
                     completeOnMain(.failure(.decodingError(decodingError)))
@@ -78,7 +84,7 @@ final class UnsplashService {
         }
     }
 
-    /// Constructs an URL request for the given Endpoint.
+    /// Constructs an URLRequest for the given Endpoint.
     ///
     /// - Parameter endpoint: Endpoint to construct the request for
     /// - Returns: Returns and URLRequest object if construction was successful.
@@ -89,9 +95,7 @@ final class UnsplashService {
         case .search(let term):
             var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
             components?.queryItems = [.init(name: "query", value: term)]
-            return components?.url.map {
-                URLRequest.init(url: $0)
-            }
+            return components?.url.map { .init(url: $0) }
         }
     }
 

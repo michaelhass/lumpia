@@ -26,7 +26,7 @@ class UnsplashServiceTest: XCTestCase {
         let decode: UnsplashService.DecodingHandler<TestCodable> = { data, _ in
             try JSONDecoder().decode(TestCodable.self, from: data)
         }
-        
+
         guard let task = service.request(endpoint, decode: decode, completion: completion) else {
             XCTFail("Task for search endpoint could not be created")
             return

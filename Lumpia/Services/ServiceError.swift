@@ -9,7 +9,9 @@
 import Foundation
 
 enum ServiceError: Swift.Error {
-     case noResponse
-     case networkingError(Swift.Error)
-     case decodingError(Swift.Error)
+    case noResponse
+    case missingResponseHeaderField(String)
+    case exceededRateLimit
+    case networkingError(Swift.Error)
+    case decodingError(Swift.Error)
  }
