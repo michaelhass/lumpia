@@ -35,12 +35,14 @@ struct CollectionView<Cell: View, Data: Hashable>: View {
         self.cellForData = cellForData
     }
 
+    var hasSearch: Bool = true
+
     var body: some View {
-         GeometryReader { geometry in
+        GeometryReader { geometry in
             ScrollView(showsIndicators: self.showsIndicators) {
                 self.createCells(geometry: geometry)
             }
-         }
+        }
     }
 
     private func createCells(geometry: GeometryProxy) -> some View {
@@ -72,5 +74,18 @@ struct CollectionView<Cell: View, Data: Hashable>: View {
             index < self.data.count ? cellForData(data[index], availableWidth) : nil
         }
 
+    }
+}
+
+struct CollectionView_Previews: PreviewProvider {
+    @State static var data: [Int] = .init(repeating: 0, count: 40)
+
+    static var previews: some View {
+        CollectionView(data: $data, columns: 3, spacing: 5) { (_, width) in
+            Rectangle()
+                .fill(Color.red)
+                .frame(width: width, height: width)
+
+        }
     }
 }
