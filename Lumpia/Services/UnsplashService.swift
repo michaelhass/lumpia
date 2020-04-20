@@ -15,10 +15,16 @@ final class UnsplashService {
 
     enum EndPoint {
         case search(String)
+        case next(PagedResponse)
 
-        var path: String {
+        var relativePath: String? {
             switch self {
-            case .search: return "search/photos"
+            case .search:
+                return "search/photos"
+
+            case .next:
+                return nil
+
             }
         }
     }
@@ -89,13 +95,17 @@ final class UnsplashService {
     /// - Parameter endpoint: Endpoint to construct the request for
     /// - Returns: Returns and URLRequest object if construction was successful.
     private func urlRequest(for endpoint: EndPoint) -> URLRequest? {
-        let url = baseURL.appendingPathComponent(endpoint.path)
-
         switch endpoint {
         case .search(let term):
+            guard let path = endpoint.relativePath else { return nil}
+            let url = baseURL.appendingPathComponent(path)
             var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
             components?.queryItems = [.init(name: "query", value: term)]
             return components?.url.map { .init(url: $0) }
+        case .next(let response):
+            return response.links[.next].map {
+                URLRequest(url: $0)
+            }
         }
     }
 

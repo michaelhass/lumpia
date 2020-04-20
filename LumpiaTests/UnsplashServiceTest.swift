@@ -19,9 +19,8 @@ class UnsplashServiceTest: XCTestCase {
 
     struct TestCodable: Codable { }
 
-    func testCreateSearchTask() throws {
-        let service = self.service
-        let endpoint = UnsplashService.EndPoint.search("search term")
+    private func testCreateTask(endpoint: UnsplashService.EndPoint, requestURL: URL) {
+
         let completion: UnsplashService.CompletionHandler<TestCodable> = { _ in }
         let decode: UnsplashService.DecodingHandler<TestCodable> = { data, _ in
             try JSONDecoder().decode(TestCodable.self, from: data)
@@ -40,7 +39,24 @@ class UnsplashServiceTest: XCTestCase {
         let authHeaderField = request.allHTTPHeaderFields?["Authorization"]
         XCTAssertNotNil(authHeaderField, "Could not find required authorization header field")
         XCTAssertEqual(authHeaderField, "Client-ID \(apiKey)")
-        XCTAssertNotNil(request.url, "Could not create search URLRequestt")
-        XCTAssertEqual(URL(string: "https://duckduckgo.com/search/photos?query=search%20term"), request.url)
+        XCTAssertNotNil(request.url, "Could not create URLRequest for endpont: \(endpoint)")
+        XCTAssertEqual(requestURL, request.url)
+    }
+
+    func testCreateSearchTask() throws {
+        let endpoint = UnsplashService.EndPoint.search("search term")
+        let requestURL = URL(string: "https://duckduckgo.com/search/photos?query=search%20term")!
+        testCreateTask(endpoint: endpoint, requestURL: requestURL)
+    }
+
+    func testCreateNextTask() throws {
+        let firstURL = baseURL.appendingPathComponent("first")
+        let nextURL = baseURL.appendingPathComponent("next")
+
+        let pagedResponse = PagedResponse(response: .init(total: 0, totalPages: 0, results: []),
+                                          links: [.first: firstURL, .next: nextURL])
+
+        let endpoint = UnsplashService.EndPoint.next(pagedResponse)
+        testCreateTask(endpoint: endpoint, requestURL: nextURL)
     }
 }

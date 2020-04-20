@@ -22,6 +22,11 @@ struct PagedResponse {
         links = PagedResponse.links(from: httpResponse)
     }
 
+    init(response: Response, links: [Link: URL]) {
+        self.response = response
+        self.links = links
+    }
+
     /// Creates a dictionary with links from the given HTTPURLResponse.
     /// The format of the links string:
     /// <https://api.unsplash.com/search/photos?page=1&query=hello>; rel="first",
