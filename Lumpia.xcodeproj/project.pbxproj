@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7E06AF33244D7022002A097D /* PagedResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06AF32244D7022002A097D /* PagedResponseTest.swift */; };
+		7E06AF35244DA90F002A097D /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06AF34244DA90F002A097D /* CollectionView.swift */; };
 		7E259137244B370900155467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E259136244B370900155467 /* AppDelegate.swift */; };
 		7E259139244B370900155467 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E259138244B370900155467 /* SceneDelegate.swift */; };
-		7E25913B244B370900155467 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25913A244B370900155467 /* ContentView.swift */; };
+		7E25913B244B370900155467 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25913A244B370900155467 /* GalleryView.swift */; };
 		7E25913D244B370900155467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E25913C244B370900155467 /* Assets.xcassets */; };
 		7E259140244B370900155467 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E25913F244B370900155467 /* Preview Assets.xcassets */; };
 		7E259143244B370900155467 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E259141244B370900155467 /* LaunchScreen.storyboard */; };
@@ -33,10 +34,11 @@
 
 /* Begin PBXFileReference section */
 		7E06AF32244D7022002A097D /* PagedResponseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedResponseTest.swift; sourceTree = "<group>"; };
+		7E06AF34244DA90F002A097D /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		7E259133244B370900155467 /* Lumpia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lumpia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E259136244B370900155467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E259138244B370900155467 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7E25913A244B370900155467 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7E25913A244B370900155467 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		7E25913C244B370900155467 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E25913F244B370900155467 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7E259142244B370900155467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -142,7 +144,8 @@
 		7E6F888B244B3AA40012B347 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7E25913A244B370900155467 /* ContentView.swift */,
+				7E25913A244B370900155467 /* GalleryView.swift */,
+				7E06AF34244DA90F002A097D /* CollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,9 +285,10 @@
 				7E6F888E244B3E210012B347 /* ServiceError.swift in Sources */,
 				7E259137244B370900155467 /* AppDelegate.swift in Sources */,
 				7E259139244B370900155467 /* SceneDelegate.swift in Sources */,
-				7E25913B244B370900155467 /* ContentView.swift in Sources */,
+				7E25913B244B370900155467 /* GalleryView.swift in Sources */,
 				7E6F8890244B3E7F0012B347 /* UnsplashService.swift in Sources */,
 				7E4003C9244C142300749708 /* ImageData.swift in Sources */,
+				7E06AF35244DA90F002A097D /* CollectionView.swift in Sources */,
 				7E4003CB244C145B00749708 /* PagedResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

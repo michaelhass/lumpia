@@ -29,7 +29,7 @@ class PagedResponseTest: XCTestCase {
                                              statusCode: 200,
                                              httpVersion: nil,
                                              headerFields: ["Link": linksString])
-        
+
         let extractedLinks = PagedResponse.links(from: responseHeader!)
 
         let testLinks: [PagedResponse.Link: URL] = [
@@ -41,6 +41,4 @@ class PagedResponseTest: XCTestCase {
 
         XCTAssertEqual(extractedLinks, testLinks)
     }
-
-
 }
