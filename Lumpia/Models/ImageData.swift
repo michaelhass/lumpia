@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Image data / information retrieved from the unsplash api.
 struct ImageData: Codable {
     let id: String
     let width: Int

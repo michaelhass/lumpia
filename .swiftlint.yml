@@ -12,6 +12,8 @@ file_length:
   warning: 800
   error: 1200
 
+nesting:
+  type_level: 2
 type_name:
   min_length: 4 # only warning
   max_length: # warning and error
