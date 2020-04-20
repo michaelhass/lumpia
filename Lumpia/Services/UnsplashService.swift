@@ -24,13 +24,12 @@ final class UnsplashService {
 
             case .next:
                 return nil
-
             }
         }
     }
 
     typealias CompletionHandler<T> = (Result<T, ServiceError>) -> Void
-    typealias DecodingHandler<T> = (Data, URLResponse) throws -> T
+    typealias DecodingHandler<T> = (Data, HTTPURLResponse) throws -> T
 
     // MARK: Properties
 
@@ -78,6 +77,8 @@ final class UnsplashService {
                 guard let data = data, let response = response as? HTTPURLResponse else {
                         return completeOnMain(.failure(.noResponse))
                 }
+
+                // TODO: Check rate limit
 
                 do {
                     let decoded = try decode(data, response)

@@ -15,7 +15,7 @@ struct PagedResponse {
     /// Paging information retrieved from the HTTPResponse header
     let links: [Link: URL]
 
-    init(httpResponse: HTTPURLResponse, responseData: Data) throws {
+    init(responseData: Data, httpResponse: HTTPURLResponse) throws {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         response = try decoder.decode(Response.self, from: responseData)

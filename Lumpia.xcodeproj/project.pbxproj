@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E06AF33244D7022002A097D /* PagedResponseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06AF32244D7022002A097D /* PagedResponseTest.swift */; };
 		7E259137244B370900155467 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E259136244B370900155467 /* AppDelegate.swift */; };
 		7E259139244B370900155467 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E259138244B370900155467 /* SceneDelegate.swift */; };
 		7E25913B244B370900155467 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25913A244B370900155467 /* ContentView.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E06AF32244D7022002A097D /* PagedResponseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedResponseTest.swift; sourceTree = "<group>"; };
 		7E259133244B370900155467 /* Lumpia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lumpia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E259136244B370900155467 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E259138244B370900155467 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				7E25914D244B370900155467 /* LumpiaTests.swift */,
 				7E25914F244B370900155467 /* Info.plist */,
 				7E6F8892244B42BF0012B347 /* UnsplashServiceTest.swift */,
+				7E06AF32244D7022002A097D /* PagedResponseTest.swift */,
 			);
 			path = LumpiaTests;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E06AF33244D7022002A097D /* PagedResponseTest.swift in Sources */,
 				7E25914E244B370900155467 /* LumpiaTests.swift in Sources */,
 				7E6F8893244B42BF0012B347 /* UnsplashServiceTest.swift in Sources */,
 			);
