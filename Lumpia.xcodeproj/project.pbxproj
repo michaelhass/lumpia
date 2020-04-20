@@ -14,7 +14,6 @@
 		7E25913D244B370900155467 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E25913C244B370900155467 /* Assets.xcassets */; };
 		7E259140244B370900155467 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E25913F244B370900155467 /* Preview Assets.xcassets */; };
 		7E259143244B370900155467 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E259141244B370900155467 /* LaunchScreen.storyboard */; };
-		7E25914E244B370900155467 /* LumpiaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25914D244B370900155467 /* LumpiaTests.swift */; };
 		7E4003C9244C142300749708 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4003C8244C142300749708 /* ImageData.swift */; };
 		7E4003CB244C145B00749708 /* PagedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4003CA244C145B00749708 /* PagedResponse.swift */; };
 		7E6F888E244B3E210012B347 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F888D244B3E210012B347 /* ServiceError.swift */; };
@@ -43,7 +42,6 @@
 		7E259142244B370900155467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E259144244B370900155467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E259149244B370900155467 /* LumpiaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LumpiaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E25914D244B370900155467 /* LumpiaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LumpiaTests.swift; sourceTree = "<group>"; };
 		7E25914F244B370900155467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E4003C8244C142300749708 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		7E4003CA244C145B00749708 /* PagedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedResponse.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 		7E25914C244B370900155467 /* LumpiaTests */ = {
 			isa = PBXGroup;
 			children = (
-				7E25914D244B370900155467 /* LumpiaTests.swift */,
 				7E25914F244B370900155467 /* Info.plist */,
 				7E6F8892244B42BF0012B347 /* UnsplashServiceTest.swift */,
 				7E06AF32244D7022002A097D /* PagedResponseTest.swift */,
@@ -297,7 +294,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E06AF33244D7022002A097D /* PagedResponseTest.swift in Sources */,
-				7E25914E244B370900155467 /* LumpiaTests.swift in Sources */,
 				7E6F8893244B42BF0012B347 /* UnsplashServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
