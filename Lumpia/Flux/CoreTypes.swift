@@ -8,12 +8,6 @@
 
 import Foundation
 
-protocol SearchObserver {
-    func searchStarted()
-    func searchEnded(searchText: String)
-    func searchCanceled()
-}
-
 protocol Action { }
 
 protocol AsyncAction: Action {
@@ -35,10 +29,13 @@ final class Store<State>: ObservableObject {
     }
 
     func dispatch(action: Action) {
-        self.state = self.reducer(self.state, action)
+        DispatchQueue.main.async {
+            print("--- Action \(action)---")
+            self.state = self.reducer(self.state, action)
 
-        if let async = action as? AsyncAction {
-            async.execute(dispatch: self.dispatch(action:))
+            if let async = action as? AsyncAction {
+                async.execute(dispatch: self.dispatch(action:))
+            }
         }
     }
 }

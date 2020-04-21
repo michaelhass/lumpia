@@ -14,11 +14,16 @@ struct ImageSearchState {
     var query: String?
     var currentPage: PagedResponse?
     var images: [ImageData]
+    var error: Error?
 
     enum Status {
         case idle
-        case fetching(String)
-        case success(PagedResponse)
-        case failure(Swift.Error)
+        case fetching
+        case success
+        case failure
+    }
+
+    static var initalState: ImageSearchState {
+        return ImageSearchState(status: .idle, images: [])
     }
 }

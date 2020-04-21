@@ -30,6 +30,7 @@
 		7E6F888E244B3E210012B347 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F888D244B3E210012B347 /* ServiceError.swift */; };
 		7E6F8890244B3E7F0012B347 /* UnsplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F888F244B3E7F0012B347 /* UnsplashService.swift */; };
 		7E6F8893244B42BF0012B347 /* UnsplashServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F8892244B42BF0012B347 /* UnsplashServiceTest.swift */; };
+		7EEEC774244EF13800A3A069 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEEC773244EF13800A3A069 /* ImageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		7E6F888D244B3E210012B347 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		7E6F888F244B3E7F0012B347 /* UnsplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashService.swift; sourceTree = "<group>"; };
 		7E6F8892244B42BF0012B347 /* UnsplashServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashServiceTest.swift; sourceTree = "<group>"; };
+		7EEEC773244EF13800A3A069 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,17 @@
 				7E06AF4C244ED88E002A097D /* AppReducer.swift */,
 			);
 			path = Reducer;
+			sourceTree = "<group>";
+		};
+		7E06AF50244EE793002A097D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7E06AF34244DA90F002A097D /* CollectionView.swift */,
+				7E06AF37244DE4B4002A097D /* SquaredImage.swift */,
+				7E06AF39244E1445002A097D /* SearchBar.swift */,
+				7EEEC773244EF13800A3A069 /* ImageCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		7E25912A244B370900155467 = {
@@ -212,10 +225,8 @@
 		7E6F888B244B3AA40012B347 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E06AF50244EE793002A097D /* Components */,
 				7E25913A244B370900155467 /* GalleryView.swift */,
-				7E06AF34244DA90F002A097D /* CollectionView.swift */,
-				7E06AF37244DE4B4002A097D /* SquaredImage.swift */,
-				7E06AF39244E1445002A097D /* SearchBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -355,6 +366,7 @@
 				7E06AF48244ECC75002A097D /* ImageSearchState.swift in Sources */,
 				7E6F888E244B3E210012B347 /* ServiceError.swift in Sources */,
 				7E06AF4D244ED88E002A097D /* AppReducer.swift in Sources */,
+				7EEEC774244EF13800A3A069 /* ImageCell.swift in Sources */,
 				7E259137244B370900155467 /* AppDelegate.swift in Sources */,
 				7E259139244B370900155467 /* SceneDelegate.swift in Sources */,
 				7E06AF40244EB3F4002A097D /* CoreTypes.swift in Sources */,

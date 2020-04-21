@@ -9,7 +9,12 @@
 import Foundation
 
 /// Image data / information retrieved from the unsplash api.
-struct ImageData: Codable, Identifiable {
+struct ImageData: Codable, Identifiable, Hashable {
+
+    static func == (left: ImageData, right: ImageData) -> Bool {
+        return left.id == right.id
+    }
+
     let id: String
     let width: Int
     let height: Int
@@ -18,7 +23,7 @@ struct ImageData: Codable, Identifiable {
     let altDescription: String?
     let urls: Sizes
 
-    struct Sizes: Codable {
+    struct Sizes: Codable, Hashable {
         let regular: URL
         let small: URL
         let thumb: URL

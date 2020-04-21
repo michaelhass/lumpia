@@ -8,18 +8,10 @@
 
 import SwiftUI
 
-struct SearchObserverTest: SearchObserver {
-    func searchStarted() {
-        print("Start")
-    }
-
-    func searchEnded(searchText: String) {
-        print("search perfomed: \(searchText)")
-    }
-
-    func searchCanceled() {
-        print("search canceled")
-    }
+protocol SearchObserver {
+    func searchStarted()
+    func searchEnded(searchText: String)
+    func searchCanceled()
 }
 
 struct SearchBar: View {
@@ -38,10 +30,8 @@ struct SearchBar: View {
             Image(systemName: "magnifyingglass")
 
             TextField("search", text: $searchText, onEditingChanged: { editing in
-
                 if editing {
                     self.searchObserver.searchStarted()
-
                 }
                 self.showCancelButton = editing
 
@@ -75,6 +65,6 @@ struct SearchBar: View {
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBar(searchObserver: SearchObserverTest())
+        SearchBar(searchObserver: SearchObserverTest(dispatch: { _ in }))
     }
 }

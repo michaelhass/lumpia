@@ -12,17 +12,23 @@ func imageSearchReducer(state: ImageSearchState, action: Action) -> ImageSearchS
 
     var newState = state
     switch action {
-    case let queryAction as ImageSearchActions.ExecuteQuery:
-        newState.status = ImageSearchState.Status.fetching(queryAction.query)
+    // Only update State if query has changed
+    case let queryAction as ImageSearchActions.ExecuteQuery where state.query != queryAction.query:
+        // Reset search state for every new query
+        newState = .initalState
+        newState.status = .fetching
         newState.query = queryAction.query
 
     case let resultAction as ImageSearchActions.SetSearchResult:
         newState.images = state.images + resultAction.page.response.results
         newState.currentPage = resultAction.page
-        newState.status  = .success(resultAction.page)
+        newState.status  = .success
 
     case let errorAction as ImageSearchActions.ShowError:
-        newState.status  = .failure(errorAction.error)
+        // Reset search state in case of an error
+        newState = .initalState
+        newState.status  = .failure
+        newState.error = errorAction.error
 
     default:
         break
