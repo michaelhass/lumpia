@@ -73,7 +73,6 @@ struct CollectionView<Cell: View, Data: Hashable>: View {
         return ZStack {
             index < self.data.count ? cellForData(data[index], availableWidth) : nil
         }
-
     }
 }
 

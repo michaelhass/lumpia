@@ -25,13 +25,12 @@ struct GalleryView: View {
     private let textPadding: CGFloat = 12
 
     var body: some View {
-
         NavigationView {
             VStack {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Unsplash").font(.largeTitle)
                         .bold()
-                    SearchBar()
+                    SearchBar(searchObserver: SearchObserverTest())
                 }.padding()
 
                 CollectionView(data: $data, columns: numberOfColumns, spacing: cellSpacing) { _, width in
@@ -58,11 +57,13 @@ struct GalleryView: View {
                 .gesture(DragGesture().onChanged({ _ in UIApplication.shared.dismissKeyboard() }))
                 .padding(.horizontal)
 
-            }.navigationBarTitle("", displayMode: .inline)
-            .navigationBarHidden(true)
+            }
+                // navigationBarTitle has to be called,
+                // else setHidden does not have any effects. -.-
+                .navigationBarTitle("", displayMode: .inline)
+                .navigationBarHidden(true)
 
         }.navigationViewStyle(StackNavigationViewStyle())
-
     }
 }
 

@@ -8,31 +8,61 @@
 
 import SwiftUI
 
+struct SearchObserverTest: SearchObserver {
+    func searchStarted() {
+        print("Start")
+    }
+
+    func searchEnded(searchText: String) {
+        print("search perfomed: \(searchText)")
+    }
+
+    func searchCanceled() {
+        print("search canceled")
+    }
+}
+
 struct SearchBar: View {
+
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
+
+    private var searchObserver: SearchObserver
+
+    init(searchObserver: SearchObserver) {
+        self.searchObserver = searchObserver
+    }
 
     var body: some View {
         HStack {
             Image(systemName: "magnifyingglass")
 
-            TextField("search", text: $searchText, onEditingChanged: { _ in
-                self.showCancelButton = true
+            TextField("search", text: $searchText, onEditingChanged: { editing in
+
+                if editing {
+                    self.searchObserver.searchStarted()
+
+                }
+                self.showCancelButton = editing
+
             }, onCommit: {
-                print("onCommit")
+                self.searchObserver.searchEnded(searchText: self.searchText)
+
             }).foregroundColor(.primary)
 
             Button(action: {
                 self.searchText = ""
             }, label: {
                 Image(systemName: "xmark.circle.fill")
-                    .opacity(searchText == "" ? 0 : 1)
-            })
+            }).opacity(self.searchText.isEmpty ? 0 : 1)
+
             if showCancelButton {
                 Button("Cancel") {
                     UIApplication.shared.dismissKeyboard()
                     self.searchText = ""
                     self.showCancelButton = false
+                    self.searchObserver.searchCanceled()
+
                 }.foregroundColor(Color(.systemBlue))
             }
 
@@ -45,6 +75,6 @@ struct SearchBar: View {
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBar()
+        SearchBar(searchObserver: SearchObserverTest())
     }
 }

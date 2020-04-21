@@ -79,7 +79,6 @@ final class UnsplashService {
                 }
 
                 // TODO: Check rate limit
-
                 do {
                     let decoded = try decode(data, response)
                     completion(.success(decoded))
