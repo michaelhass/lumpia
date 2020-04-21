@@ -12,6 +12,6 @@ struct AppState {
     var searchState: ImageSearchState
 
     static var initialState: AppState {
-        return .init(searchState: .init())
+        return .init(searchState: ImageSearchState(status: .idle, images: []))
     }
 }

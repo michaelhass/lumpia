@@ -9,4 +9,16 @@
 import Foundation
 
 struct ImageSearchState {
+
+    var status: Status
+    var query: String?
+    var currentPage: PagedResponse?
+    var images: [ImageData]
+
+    enum Status {
+        case idle
+        case fetching(String)
+        case success(PagedResponse)
+        case failure(Swift.Error)
+    }
 }

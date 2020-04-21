@@ -9,16 +9,27 @@
 import UIKit
 import SwiftUI
 
+// Object containing all services used by the application
+var shared: Shared?
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+
+    override init() {
+        super.init()
+
+        let baseURL = URL(string: "")!
+        let apiKey = ""
+        let unsplash = UnsplashService(baseURL: baseURL, apiKey: apiKey)
+        shared = .init(unsplash: unsplash)
+    }
 
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
 
         // Create the SwiftUI view that provides the window contents.
-
         let appStateStore = Store<AppState>.init(initialState: .initialState,
                                                  reducer: appReducer(state:action:))
         let contentView = GalleryView().environmentObject(appStateStore)

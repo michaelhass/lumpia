@@ -10,12 +10,14 @@ import Foundation
 
 struct ImageSearchActions {
 
-    struct FetchImages: AsyncAction {
+    // Make it mutable to allow easier testability
+    static var unsplashService: UnsplashService? = shared?.unsplash
+
+    struct ExecuteQuery: AsyncAction {
         let query: String
 
         func execute(dispatch: @escaping DispatchFunction) {
-            let service = UnsplashService(baseURL: URL(string: "")!, apiKey: "")
-            service.request(.search(query), decode: PagedResponse.init, completion: { result in
+            unsplashService?.request(.search(query), decode: PagedResponse.init, completion: { result in
                 switch result {
                 case .success(let page):
                     dispatch(SetSearchResult(page: page))
