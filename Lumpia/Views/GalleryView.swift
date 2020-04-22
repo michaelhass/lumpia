@@ -16,6 +16,7 @@ struct GalleryView: View {
     @EnvironmentObject var store: Store<AppState>
     @State private var data: [ImageData] = []
     @State private var attributes: Attributes = .init()
+    @State private var imageDetail: ImageData?
 
     // MARK: View properties
 
@@ -130,9 +131,11 @@ struct GalleryView: View {
         CollectionView(data: $data, columns: numberOfColumns,
                        spacing: cellSpacing) { imageData, width in
 
-                        ImageCell(imageData: imageData, preferredWidth: width, action: { _ in
-                            // TODO: Implement action
-                        })
+                        ImageCell(imageData: imageData, preferredWidth: width, action: {
+                            self.imageDetail = $0
+                        }).sheet(item: self.$imageDetail) { data in
+                            ImageDetailView(imageData: data)
+                        }
         }.padding(.horizontal)
     }
 }
