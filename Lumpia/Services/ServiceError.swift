@@ -8,9 +8,24 @@
 
 import Foundation
 
-enum ServiceError: Swift.Error {
+enum ServiceError: Swift.Error, Equatable {
     case noResponse
     case exceededRateLimit
     case networkingError(Swift.Error)
     case decodingError(Swift.Error)
+
+    static func == (lhs: ServiceError, rhs: ServiceError) -> Bool {
+        switch (lhs, rhs) {
+        case (.noResponse, .noResponse):
+            return true
+        case (.exceededRateLimit, .exceededRateLimit):
+            return true
+        case (.networkingError, .networkingError):
+            return true
+        case (.decodingError, .decodingError):
+            return true
+        default:
+            return false
+        }
+    }
  }

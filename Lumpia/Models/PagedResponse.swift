@@ -9,7 +9,7 @@
 import Foundation
 
 /// Wrapper around and paged response retrieved from the unsplash api.
-struct PagedResponse {
+struct PagedResponse: Equatable {
     /// The actual response
     let response: Response
     /// Paging information retrieved from the HTTPResponse header
@@ -56,7 +56,7 @@ struct PagedResponse {
 
 extension PagedResponse {
 
-    struct Response: Codable {
+    struct Response: Codable, Equatable {
         let total: Int
         let totalPages: Int
         let results: [ImageData]
