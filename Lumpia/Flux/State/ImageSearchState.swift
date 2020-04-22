@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct ImageSearchState {
+struct ImageSearchState: Equatable {
 
     var status: Status
     var query: String?
     var currentPage: PagedResponse?
     var images: [ImageData]
-    var error: Error?
+    var error: ServiceError?
 
-    enum Status {
+    enum Status: Equatable {
         case idle
         case fetching
         case success

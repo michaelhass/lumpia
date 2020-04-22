@@ -31,6 +31,7 @@
 		7E6F8890244B3E7F0012B347 /* UnsplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F888F244B3E7F0012B347 /* UnsplashService.swift */; };
 		7E6F8893244B42BF0012B347 /* UnsplashServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F8892244B42BF0012B347 /* UnsplashServiceTest.swift */; };
 		7EEEC774244EF13800A3A069 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEEC773244EF13800A3A069 /* ImageCell.swift */; };
+		7EEEC776244FEEAE00A3A069 /* ImageSearchReducerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEEC775244FEEAE00A3A069 /* ImageSearchReducerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		7E6F888F244B3E7F0012B347 /* UnsplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashService.swift; sourceTree = "<group>"; };
 		7E6F8892244B42BF0012B347 /* UnsplashServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashServiceTest.swift; sourceTree = "<group>"; };
 		7EEEC773244EF13800A3A069 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		7EEEC775244FEEAE00A3A069 /* ImageSearchReducerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchReducerTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				7E25914F244B370900155467 /* Info.plist */,
 				7E6F8892244B42BF0012B347 /* UnsplashServiceTest.swift */,
 				7E06AF32244D7022002A097D /* PagedResponseTest.swift */,
+				7EEEC775244FEEAE00A3A069 /* ImageSearchReducerTest.swift */,
 			);
 			path = LumpiaTests;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EEEC776244FEEAE00A3A069 /* ImageSearchReducerTest.swift in Sources */,
 				7E06AF33244D7022002A097D /* PagedResponseTest.swift in Sources */,
 				7E6F8893244B42BF0012B347 /* UnsplashServiceTest.swift in Sources */,
 			);
