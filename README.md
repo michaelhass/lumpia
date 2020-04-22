@@ -13,8 +13,15 @@ Get an API Key from [unsplash.com](https://unsplash.com/developers) and paste it
     // Place your key here without 'Client-ID'
     let apiKey = "YOUR_UNSPLASH_API_KEY"
     let unsplash = UnsplashService(baseURL: baseURL, apiKey: apiKey)
-
 ```
+
+## Features
+- ImageGallery
+- Search for images
+- Image Caching
+- Simple Redux like implementation
+- ImageDetail
+
 ## Info
 - Created with XCode 11.4.1 
 - Swift 5.2
