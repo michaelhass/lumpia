@@ -21,9 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     override init() {
         super.init()
         let baseURL = URL(string: "https://api.unsplash.com/")!
+        // Place your key here without 'Client-ID'
         let apiKey = "YOUR_UNSPLASH_API_KEY"
         let unsplash = UnsplashService(baseURL: baseURL, apiKey: apiKey)
-        shared = .init(unsplash: unsplash)
+        shared = .init(unsplash: unsplash, imageCache: .init())
     }
 
     func scene(_ scene: UIScene,

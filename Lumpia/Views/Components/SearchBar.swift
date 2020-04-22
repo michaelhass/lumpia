@@ -8,22 +8,34 @@
 
 import SwiftUI
 
+// MARK: - SearchObserver
+
 protocol SearchObserver {
     func searchStarted()
     func searchEnded(searchText: String)
     func searchCanceled()
 }
 
+// MARK: - SearchBar
+
 struct SearchBar: View {
+
+    // MARK: Bindings
 
     @State private var text = ""
     @State private var showCancel: Bool = false
 
+    // MARK: Properties
+
     private var searchObserver: SearchObserver
+
+    // MARK: Init
 
     init(searchObserver: SearchObserver) {
         self.searchObserver = searchObserver
     }
+
+    // MARK: View Builder
 
     var body: some View {
         HStack {
@@ -62,6 +74,8 @@ struct SearchBar: View {
             .cornerRadius(10.0)
     }
 }
+
+// MARK: - Preview
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
