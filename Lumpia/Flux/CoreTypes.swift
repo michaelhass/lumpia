@@ -20,17 +20,17 @@ typealias DispatchFunction = (_ action: Action) -> Void
 
 final class Store<State>: ObservableObject {
 
-    @Published public var state: State
+    @Published private(set) var state: State
     private let reducer: Reducer<State>
 
     init(initialState: State, reducer: @escaping Reducer<State>) {
         self.state = initialState
         self.reducer = reducer
+        // TODO: Implement middleware.
     }
 
     func dispatch(action: Action) {
         DispatchQueue.main.async {
-            print("--- Action \(action)---")
             self.state = self.reducer(self.state, action)
 
             if let async = action as? AsyncAction {

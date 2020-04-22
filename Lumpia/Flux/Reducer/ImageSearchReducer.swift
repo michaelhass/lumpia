@@ -19,6 +19,9 @@ func imageSearchReducer(state: ImageSearchState, action: Action) -> ImageSearchS
         newState.status = .fetching
         newState.query = queryAction.query
 
+    case is ImageSearchActions.FetchNextPage:
+        newState.status = .fetching
+
     case let resultAction as ImageSearchActions.SetSearchResult:
         newState.images = state.images + resultAction.page.response.results
         newState.currentPage = resultAction.page

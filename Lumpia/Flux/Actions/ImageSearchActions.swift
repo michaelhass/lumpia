@@ -29,6 +29,22 @@ struct ImageSearchActions {
         }
     }
 
+    struct FetchNextPage: AsyncAction {
+        let currentPage: PagedResponse
+
+        func execute(dispatch: @escaping DispatchFunction) {
+            unsplashService?.request(.next(currentPage), decode: PagedResponse.init, completion: { result in
+                switch result {
+                case .success(let page):
+                    dispatch(SetSearchResult(page: page))
+
+                case .failure(let error):
+                    dispatch(ShowError(error: error))
+                }
+            })?.resume()
+        }
+    }
+
     struct SetSearchResult: Action {
         let page: PagedResponse
     }

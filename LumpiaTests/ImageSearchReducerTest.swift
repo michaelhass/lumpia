@@ -27,6 +27,28 @@ class ImageSearchReducerTest: XCTestCase {
         XCTAssertTrue(updatedState.images.isEmpty)
     }
 
+    func testFetchNextPage() {
+
+        let testData: [ImageData] = [.testData(withId: "1")]
+        let testLinks: [PagedResponse.Link: URL]  = [.next: URL(string: "https://duckduckgo.com/next_2")!]
+        let testPage = PagedResponse(response: .init(total: 0, totalPages: 0, results: testData),
+                                     links: testLinks)
+
+        var testState: ImageSearchState = ImageSearchState.initalState
+        testState.images = testData
+        testState.status = .success
+        testState.currentPage = testPage
+
+        let action  = ImageSearchActions.FetchNextPage(currentPage: testPage)
+        let updatedState = imageSearchReducer(state: testState, action: action)
+
+        XCTAssertNotEqual(testState, updatedState)
+        XCTAssertEqual(updatedState.status, .fetching)
+        XCTAssertNil(updatedState.error)
+        XCTAssertNotNil(updatedState.currentPage)
+        XCTAssertFalse(updatedState.images.isEmpty)
+    }
+
     func testSetSearchResult() {
 
         let firstPageLinks: [PagedResponse.Link: URL]  = [.next: URL(string: "https://duckduckgo.com/next_2")!]
@@ -45,7 +67,7 @@ class ImageSearchReducerTest: XCTestCase {
         XCTAssertNil(updatedState.error)
         XCTAssertEqual(updatedState.currentPage, firstPage)
 
-        let secondPageLinks: [PagedResponse.Link: URL]  = [.next: URL(string: "https://duckduckgo.com/next_2")!]
+        let secondPageLinks: [PagedResponse.Link: URL]  = [.next: URL(string: "https://duckduckgo.com/next_3")!]
         let secondPageData: [ImageData] = (10..<20).map { .testData(withId: "\($0)") }
         let secondPage = PagedResponse(response: .init(total: 0, totalPages: 0, results: secondPageData),
                                                 links: secondPageLinks)
@@ -55,6 +77,7 @@ class ImageSearchReducerTest: XCTestCase {
 
         XCTAssertEqual(updatedState.status, .success)
         XCTAssertEqual(updatedState.images, firstPageData + secondPageData)
+        XCTAssertEqual(updatedState.currentPage, secondPage)
         XCTAssertNil(updatedState.error)
         XCTAssertEqual(updatedState.currentPage, secondPage)
     }
