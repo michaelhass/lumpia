@@ -20,9 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     override init() {
         super.init()
-
         let baseURL = URL(string: "https://api.unsplash.com/")!
-        let apiKey = "hi1fmxPWeaX6cIo9YE6k8FvpDXzp15V280hQngaTx1U"
+        let apiKey = "YOUR_UNSPLASH_API_KEY"
         let unsplash = UnsplashService(baseURL: baseURL, apiKey: apiKey)
         shared = .init(unsplash: unsplash)
     }
