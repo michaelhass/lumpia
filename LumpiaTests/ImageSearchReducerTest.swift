@@ -19,6 +19,8 @@ class ImageSearchReducerTest: XCTestCase {
         testState.images = [.testData(withId: "1")]
         let updatedState = imageSearchReducer(state: testState, action: action)
 
+        // - Status equals .fetching
+        // - State properties have to be resetted.
         XCTAssertNotEqual(testState, updatedState)
         XCTAssertEqual(updatedState.status, .fetching)
         XCTAssertEqual(updatedState.query, query)
@@ -42,11 +44,13 @@ class ImageSearchReducerTest: XCTestCase {
         let action  = ImageSearchActions.FetchNextPage(currentPage: testPage)
         let updatedState = imageSearchReducer(state: testState, action: action)
 
+        // - Status equals .fetching
+        // - State properties are transferred from the old state.
         XCTAssertNotEqual(testState, updatedState)
         XCTAssertEqual(updatedState.status, .fetching)
         XCTAssertNil(updatedState.error)
-        XCTAssertNotNil(updatedState.currentPage)
-        XCTAssertFalse(updatedState.images.isEmpty)
+        XCTAssertEqual(updatedState.currentPage, testPage)
+        XCTAssertEqual(updatedState.images, testData)
     }
 
     func testSetSearchResult() {
@@ -61,6 +65,8 @@ class ImageSearchReducerTest: XCTestCase {
         let initialState = ImageSearchState.initalState
         var updatedState = imageSearchReducer(state: initialState, action: firstPageAction)
 
+        // - Status equals .success
+        // - Data from the first page is set
         XCTAssertNotEqual(initialState, updatedState)
         XCTAssertEqual(updatedState.status, .success)
         XCTAssertEqual(updatedState.images, firstPageData)
@@ -75,6 +81,8 @@ class ImageSearchReducerTest: XCTestCase {
         let secondPageAction = ImageSearchActions.SetSearchResult(page: secondPage )
         updatedState = imageSearchReducer(state: updatedState, action: secondPageAction)
 
+        // - Status equals .success
+        // - imageData was append to the existing data
         XCTAssertEqual(updatedState.status, .success)
         XCTAssertEqual(updatedState.images, firstPageData + secondPageData)
         XCTAssertEqual(updatedState.currentPage, secondPage)
@@ -90,6 +98,8 @@ class ImageSearchReducerTest: XCTestCase {
 
         let updatedState = imageSearchReducer(state: testState, action: action)
 
+        // - Status equals .failure
+        // - State is resetted.
         XCTAssertEqual(updatedState.status, .failure)
         XCTAssertTrue(updatedState.images.isEmpty)
         XCTAssertNotNil(updatedState.error)

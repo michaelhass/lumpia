@@ -8,6 +8,12 @@
 
 import Foundation
 
+/// Reducer for search relazed states.
+///
+/// - Parameters:
+///   - state: ImageSearchState to evaluate
+///   - action: Action to evaluate
+/// - Returns: Updated ImageSearchStae
 func imageSearchReducer(state: ImageSearchState, action: Action) -> ImageSearchState {
 
     var newState = state

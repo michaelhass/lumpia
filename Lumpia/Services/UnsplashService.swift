@@ -74,11 +74,14 @@ final class UnsplashService {
                     return completeOnMain(.failure(.networkingError(error!)))
                 }
 
-                guard let data = data, let response = response as? HTTPURLResponse else {
-                        return completeOnMain(.failure(.noResponse))
+                guard let response = response as? HTTPURLResponse else {
+                    return completeOnMain(.failure(.noResponse))
                 }
 
-                // TODO: Check rate limit
+                guard let data = data else {
+                    return completeOnMain(.failure(.noResponse))
+                }
+
                 do {
                     let decoded = try decode(data, response)
                     completion(.success(decoded))

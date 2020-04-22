@@ -8,6 +8,7 @@
 
 import Foundation
 
+// The application's root state
 struct AppState {
     var searchState: ImageSearchState
 

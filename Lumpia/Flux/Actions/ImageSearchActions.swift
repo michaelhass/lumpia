@@ -8,11 +8,15 @@
 
 import Foundation
 
+/// Collection of image search related actions
 struct ImageSearchActions {
 
     // Make it mutable to allow easier testability
     static var unsplashService: UnsplashService? = shared?.unsplash
 
+    /// Requests a search with the given query.
+    /// If the request was successfull a SetSearchResult with the received respons
+    /// will be executede, else ShowError will be executed.
     struct ExecuteQuery: AsyncAction {
         let query: String
 
@@ -29,6 +33,9 @@ struct ImageSearchActions {
         }
     }
 
+    /// Requests the next page for the given curent page.
+    /// If the request was successfull a SetSearchResult with the received response.
+    /// Else ShowError will be executed.
     struct FetchNextPage: AsyncAction {
         let currentPage: PagedResponse
 
@@ -45,10 +52,12 @@ struct ImageSearchActions {
         }
     }
 
+    /// Appends received page data to the existing data
     struct SetSearchResult: Action {
         let page: PagedResponse
     }
 
+    /// Will display the given error
     struct ShowError: Action {
         let error: ServiceError
     }

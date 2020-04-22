@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Container for every shared service.
 public struct Shared {
     let unsplash: UnsplashService
 }

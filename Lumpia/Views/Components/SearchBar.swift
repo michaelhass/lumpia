@@ -16,8 +16,8 @@ protocol SearchObserver {
 
 struct SearchBar: View {
 
-    @State private var searchText = ""
-    @State private var showCancelButton: Bool = false
+    @State private var text = ""
+    @State private var showCancel: Bool = false
 
     private var searchObserver: SearchObserver
 
@@ -29,28 +29,28 @@ struct SearchBar: View {
         HStack {
             Image(systemName: "magnifyingglass")
 
-            TextField("search", text: $searchText, onEditingChanged: { editing in
+            TextField("search", text: $text, onEditingChanged: { editing in
                 if editing {
                     self.searchObserver.searchStarted()
                 }
-                self.showCancelButton = editing
+                self.showCancel = editing
 
             }, onCommit: {
-                self.searchObserver.searchEnded(searchText: self.searchText)
+                self.searchObserver.searchEnded(searchText: self.text)
 
             }).foregroundColor(.primary)
 
             Button(action: {
-                self.searchText = ""
+                self.text = ""
             }, label: {
                 Image(systemName: "xmark.circle.fill")
-            }).opacity(self.searchText.isEmpty ? 0 : 1)
+            }).opacity(self.text.isEmpty ? 0 : 1)
 
-            if showCancelButton {
+            if showCancel {
                 Button("Cancel") {
                     UIApplication.shared.dismissKeyboard()
-                    self.searchText = ""
-                    self.showCancelButton = false
+                    self.text = ""
+                    self.showCancel = false
                     self.searchObserver.searchCanceled()
 
                 }.foregroundColor(Color(.systemBlue))
@@ -65,6 +65,6 @@ struct SearchBar: View {
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBar(searchObserver: SearchObserverTest(dispatch: { _ in }))
+        SearchBar(searchObserver: GalleryView.ImageSearchTextObserver(dispatch: { _ in }))
     }
 }

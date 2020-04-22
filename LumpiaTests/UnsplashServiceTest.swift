@@ -20,7 +20,6 @@ class UnsplashServiceTest: XCTestCase {
     struct TestCodable: Codable { }
 
     private func testCreateTask(endpoint: UnsplashService.EndPoint, requestURL: URL) {
-
         let completion: UnsplashService.CompletionHandler<TestCodable> = { _ in }
         let decode: UnsplashService.DecodingHandler<TestCodable> = { data, _ in
             try JSONDecoder().decode(TestCodable.self, from: data)

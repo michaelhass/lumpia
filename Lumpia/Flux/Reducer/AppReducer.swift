@@ -8,6 +8,12 @@
 
 import Foundation
 
+/// The main reducer of the application
+///
+/// - Parameters:
+///   - state: The root state of the application
+///   - action: Action to evaluate
+/// - Returns: Updated appState
 func appReducer(state: AppState, action: Action) -> AppState {
     var state = state
     state.searchState = imageSearchReducer(state: state.searchState, action: action)

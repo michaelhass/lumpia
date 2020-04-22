@@ -210,7 +210,6 @@
 			children = (
 				7E4003C8244C142300749708 /* ImageData.swift */,
 				7E4003CA244C145B00749708 /* PagedResponse.swift */,
-				7E06AF4E244EE490002A097D /* Shared.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,6 +236,7 @@
 		7E6F888C244B3DCD0012B347 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				7E06AF4E244EE490002A097D /* Shared.swift */,
 				7E6F888D244B3E210012B347 /* ServiceError.swift */,
 				7E6F888F244B3E7F0012B347 /* UnsplashService.swift */,
 			);

@@ -9,7 +9,6 @@
 import Foundation
 
 struct ImageSearchState: Equatable {
-
     var status: Status
     var query: String?
     var currentPage: PagedResponse?
