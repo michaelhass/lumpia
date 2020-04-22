@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-// See: https://gist.github.com/michaelshass/c298babb2d2a72e74f18031e80fda0fd
 extension Color {
 
     init(hex: String) {
@@ -30,9 +29,10 @@ extension Color {
             (alpha, red, green, blue) = (1, 1, 1, 0)
         }
 
-        self.init(red: Double(red) / 255.0,
-                  green: Double(green),
-                  blue: Double(blue) / 255.0,
-                  opacity: Double(alpha) / 255.0)
+        self.init(UIColor(red: CGFloat(red) / 255,
+                          green: CGFloat(green) / 255,
+                          blue: CGFloat(blue) / 255,
+                          alpha: CGFloat(alpha) / 255)
+        )
     }
 }

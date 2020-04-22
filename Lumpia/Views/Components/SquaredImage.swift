@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+/// View that displays a remote image in a squared format.
+/// The image will be scaled while keeping it's aspect ratio.
+/// Content bigger than the desired frame size will be clipped.
 struct SquaredImage<Placeholder: View>: View {
     let width: CGFloat
     let url: URL
@@ -32,27 +35,5 @@ struct SquaredImage<Placeholder: View>: View {
                 .frame(width: self.width, height: self.width, alignment: .center)
                 .clipped()
         }.onAppear()
-    }
-}
-
-struct RemoteImage<Placeholder: View>: View {
-    @ObservedObject private var loader: ImageLoader
-    private let placeholder: (() -> Placeholder)
-
-    init(url: URL, cache: Cache<URL, UIImage>? = nil, placeholder: @escaping () -> Placeholder) {
-        loader = ImageLoader(url: url, cache: cache)
-        self.placeholder = placeholder
-    }
-
-    var body: some View {
-        ZStack {
-            if loader.image != nil {
-                Image(uiImage: loader.image!)
-                    .resizable()
-
-            } else {
-                placeholder()
-            }
-        }
     }
 }

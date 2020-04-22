@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+// Cell for GalleryView. Square image with title.
 struct ImageCell: View {
 
     let preferredWidth: CGFloat
@@ -45,6 +46,8 @@ struct ImageCell: View {
         }
     }
 
+    /// Creates a title view displaying the description of
+    /// the image data if available.
     func title() -> some View {
         let text = imageData.description ?? imageData.altDescription ?? ""
         return Text(text)
