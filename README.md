@@ -3,8 +3,8 @@
 Unsplash image viewer. Playground for testing SwiftUI and Redux.
  
 <!-- //![Alt text](Images/screenshot.png?raw=true "Title") -->
-<img src="Images/screenshot.png" width="200">
-
+<img src="Images/screenshot_phone.png" width="150">
+<img src="Images/screenshot_tablet.png" width="300">
 
 ## How to use
 Get an API Key from [unsplash.com](https://unsplash.com/developers) and paste it in the file SceneDelegate.swift and start the app.
