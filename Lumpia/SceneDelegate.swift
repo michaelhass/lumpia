@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         super.init()
         let baseURL = URL(string: "https://api.unsplash.com/")!
         // Place your key here without 'Client-ID'
-        let apiKey = "hi1fmxPWeaX6cIo9YE6k8FvpDXzp15V280hQngaTx1U"
+        let apiKey = "YOUR_UNSPLASH_API_KEY"
         let unsplash = UnsplashService(baseURL: baseURL, apiKey: apiKey)
         shared = .init(unsplash: unsplash, imageCache: .init())
     }

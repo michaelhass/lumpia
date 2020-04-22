@@ -130,8 +130,8 @@ struct GalleryView: View {
         CollectionView(data: $data, columns: numberOfColumns,
                        spacing: cellSpacing) { imageData, width in
 
-                        ImageCell(imageData: imageData, preferredWidth: width, action: {
-                            print("Thats tapped!: \($0.description)")
+                        ImageCell(imageData: imageData, preferredWidth: width, action: { _ in
+                            // TODO: Implement action
                         })
         }.padding(.horizontal)
     }
