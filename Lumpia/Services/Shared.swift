@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import SwiftUI
 
 /// Container for every shared service.
 public struct Shared {
     let unsplash: UnsplashService
+    let imageCache: Cache<URL, UIImage>
 }

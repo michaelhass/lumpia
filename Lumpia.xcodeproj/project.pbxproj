@@ -32,6 +32,8 @@
 		7E6F8893244B42BF0012B347 /* UnsplashServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6F8892244B42BF0012B347 /* UnsplashServiceTest.swift */; };
 		7EEEC774244EF13800A3A069 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEEC773244EF13800A3A069 /* ImageCell.swift */; };
 		7EEEC776244FEEAE00A3A069 /* ImageSearchReducerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEEC775244FEEAE00A3A069 /* ImageSearchReducerTest.swift */; };
+		7EEEC77824502A5A00A3A069 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEEC77724502A5A00A3A069 /* ImageLoader.swift */; };
+		7EEEC77A245052B300A3A069 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEEC779245052B300A3A069 /* Color+Hex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		7E6F8892244B42BF0012B347 /* UnsplashServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashServiceTest.swift; sourceTree = "<group>"; };
 		7EEEC773244EF13800A3A069 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		7EEEC775244FEEAE00A3A069 /* ImageSearchReducerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchReducerTest.swift; sourceTree = "<group>"; };
+		7EEEC77724502A5A00A3A069 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		7EEEC779245052B300A3A069 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				7E06AF3C244E1A74002A097D /* UIApplication+Keyboard.swift */,
+				7EEEC779245052B300A3A069 /* Color+Hex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				7E06AF4E244EE490002A097D /* Shared.swift */,
 				7E6F888D244B3E210012B347 /* ServiceError.swift */,
 				7E6F888F244B3E7F0012B347 /* UnsplashService.swift */,
+				7EEEC77724502A5A00A3A069 /* ImageLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 			files = (
 				7E06AF48244ECC75002A097D /* ImageSearchState.swift in Sources */,
 				7E6F888E244B3E210012B347 /* ServiceError.swift in Sources */,
+				7EEEC77824502A5A00A3A069 /* ImageLoader.swift in Sources */,
 				7E06AF4D244ED88E002A097D /* AppReducer.swift in Sources */,
 				7EEEC774244EF13800A3A069 /* ImageCell.swift in Sources */,
 				7E259137244B370900155467 /* AppDelegate.swift in Sources */,
@@ -379,6 +386,7 @@
 				7E25913B244B370900155467 /* GalleryView.swift in Sources */,
 				7E6F8890244B3E7F0012B347 /* UnsplashService.swift in Sources */,
 				7E4003C9244C142300749708 /* ImageData.swift in Sources */,
+				7EEEC77A245052B300A3A069 /* Color+Hex.swift in Sources */,
 				7E06AF38244DE4B4002A097D /* SquaredImage.swift in Sources */,
 				7E06AF45244ECC4B002A097D /* AppState.swift in Sources */,
 				7E06AF3A244E1445002A097D /* SearchBar.swift in Sources */,

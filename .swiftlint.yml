@@ -29,4 +29,7 @@ identifier_name:
     - col
     - lhs
     - rhs
+    - key
+    - hex
+    - red
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)

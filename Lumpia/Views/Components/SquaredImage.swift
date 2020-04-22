@@ -8,21 +8,51 @@
 
 import SwiftUI
 
-struct SquaredImage: View {
-
+struct SquaredImage<Placeholder: View>: View {
     let width: CGFloat
+    let url: URL
+    private let placeholder: (() -> Placeholder)
+    private let cache: Cache<URL, UIImage>?
 
-    init(width: CGFloat) {
+    init(url: URL,
+         width: CGFloat,
+         cache: Cache<URL, UIImage>? = nil,
+         placeholder: @escaping () -> Placeholder) {
+
         self.width = width
+        self.url = url
+        self.cache = cache
+        self.placeholder = placeholder
     }
 
     var body: some View {
         ZStack(alignment: .center) {
-            Image("test_image")
-                .resizable()
+            RemoteImage(url: self.url, cache: cache, placeholder: placeholder)
                 .aspectRatio(contentMode: .fill)
-                .frame(width: width, height: width, alignment: .center)
+                .frame(width: self.width, height: self.width, alignment: .center)
                 .clipped()
+        }.onAppear()
+    }
+}
+
+struct RemoteImage<Placeholder: View>: View {
+    @ObservedObject private var loader: ImageLoader
+    private let placeholder: (() -> Placeholder)
+
+    init(url: URL, cache: Cache<URL, UIImage>? = nil, placeholder: @escaping () -> Placeholder) {
+        loader = ImageLoader(url: url, cache: cache)
+        self.placeholder = placeholder
+    }
+
+    var body: some View {
+        ZStack {
+            if loader.image != nil {
+                Image(uiImage: loader.image!)
+                    .resizable()
+
+            } else {
+                placeholder()
+            }
         }
     }
 }
