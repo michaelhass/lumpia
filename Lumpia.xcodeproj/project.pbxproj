@@ -76,6 +76,7 @@
 		7E25914F244B370900155467 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E4003C8244C142300749708 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		7E4003CA244C145B00749708 /* PagedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedResponse.swift; sourceTree = "<group>"; };
+		7E40E362246CFCE60020D095 /* Lumpia.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Lumpia.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7E6F8888244B38430012B347 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7E6F888D244B3E210012B347 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		7E6F888F244B3E7F0012B347 /* UnsplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashService.swift; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 		7E25912A244B370900155467 = {
 			isa = PBXGroup;
 			children = (
+				7E40E362246CFCE60020D095 /* Lumpia.playground */,
 				7E6F8888244B38430012B347 /* README.md */,
 				7E259135244B370900155467 /* Lumpia */,
 				7E25914C244B370900155467 /* LumpiaTests */,
